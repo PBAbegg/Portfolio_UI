@@ -1,22 +1,20 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
+.Head-shot {
+  background-image: url("https://live.staticflickr.com/65535/48796190808_1036eabaa1_c.jpg");
+  float: right;
+  position: relative;
+  height: 400px;
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+  background-color: #3f4550;
+  min-height: 400px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center;
+  justify-content: center; */
+  /* font-size: calc(10px + 2vmin); */
+  /* color: white; */
 }
