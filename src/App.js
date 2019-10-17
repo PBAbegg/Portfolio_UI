@@ -1,16 +1,84 @@
 import React from 'react';
-//import logo from './logo.svg';
-import './App.css';
+import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
+
+import Home from './Components/Home'
+import Projects from './Components/Projects'
+import Skills from './Components/Skills'
+import WorkExperience from './Components/WorkExperience'
+import Education from './Components/Education'
+import KnowledgeCatalog from './Components/KnowledgeCatalog'
+import References from './Components/References'
+
+// const base_url = 'http://localhost:8080'
+
+// fetch(input: base_url+)
+
+// fetch(input:'http://localhost8080.....') .then().catch()
+// fetch(input:'/post.....') .then().catch()
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      <img className="Head-shot" src="https://live.staticflickr.com/65535/48796190808_1036eabaa1_c.jpg" alt="head-shot" />
+    <Router>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/projects">Projects</Link>
+        </li>
+        <li>
+          <Link to="/skills">Skills</Link>
+        </li>
+        <li>
+          <Link to="/work_experience">Work Experience</Link>
+        </li>
+        <li>
+          <Link to="/education">Education</Link>
+        </li>
+        <li>
+          <Link to="/knowledge_catalog">Knowledge Catalog</Link>
+        </li>
+        <li>
+          <Link to="/references">References</Link>
+        </li>
+      </ul>
 
-      </header>
+      <hr />
+
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/projects">
+          <Projects />
+        </Route>
+        <Route path="/skills">
+          <Skills />
+        </Route>
+        <Route path="/work_experience">
+          <WorkExperience />
+        </Route>
+        <Route path="/education">
+          <Education />
+        </Route>
+        <Route path="/knowledge_catalog">
+          <KnowledgeCatalog />
+        </Route>
+        <Route path="/references">
+          <References />
+        </Route>
+      </Switch>
     </div>
+    </Router>
   );
 }
+
 
 export default App;
