@@ -36,19 +36,26 @@ export default class Projects extends Component {
   
     onClick(e) {
       e.preventDefault();
+      this.addProject.reset();
       console.log(`The values are ${this.state.project_name}, ${this.state.description}, and ${this.state.link}`)
-      
-      let url = buildUrl('/projects');
-      fetch(url, {
+
+      let post = { 
         method: 'POST',
-        body: JSON.stringify({
+        headers: {
+          'Content-Type': 'application/json'
+          
+        },
+        body:JSON.stringify({
           project_name: this.state.project_name,
           description: this.state.description,
-          link: this.state.link,})
+          link: this.state.link})
+        }
+        console.log(post);
       
+        fetch(buildUrl('projects'), post)
         .then(function(response) {
           if(response.ok) {
-            console.log('Click was recorded');
+            console.log('Submission was recorded');
             return;
           }
           throw new Error('Request failed.');
@@ -56,27 +63,26 @@ export default class Projects extends Component {
         .catch(function(error) {
           console.log(error);
         })
-      });
+     
 
-    }
-
+    };
 
     render() {
         return (
             <div style={{marginTop: 10}}>
                 <h3>Add New Project</h3>
-                <form>
+                <form ref={input => this.addProject = input} onSubmit={this.onClick}>
                     <div className="form-group">
                         <label>Project Name:  </label>
-                        <input type="text" className="form-control"/>
+                        <input type="text" className="form-control" onChange = {this.onChangeProjectName}/>
                     </div>
                     <div className="form-group">
                         <label>Description: </label>
-                        <input type="text" className="form-control"/>
+                        <input type="text" className="form-control" onChange = {this.onChangeDescription}/>
                     </div>
                     <div className="form-group">
                         <label>Link: </label>
-                        <input type="text" className="form-control"/>
+                        <input type="text" className="form-control" onChange = {this.onChangeLink}/>
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Add Project" className="btn btn-primary"/>
@@ -88,28 +94,5 @@ export default class Projects extends Component {
 
 }
 
-// const button = document.getElementById('');{
 
 
-
-// constructor(props) {
-//         super(props);
-//         this.state = {
-//             first_name: '',
-//             last_name: '',
-//             email: '',
-//         };
-//     }
- 
-//     componentDidMount() {
-//         let url = buildUrl('/profiles');
-//         fetch(url)
-//             .then(res => res.json())
-//             .then(json => {
-//                 this.setState({
-//                     first_name: json,
-//                     last_name: json,
-//                     email: json,
-//                 });
-//             });
-//     }

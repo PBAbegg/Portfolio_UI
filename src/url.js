@@ -1,3 +1,3 @@
 
-export const API_BSE_URL = 'http://localhost:8080';
-export const buildUrl = (path = '') => `${API_BSE_URL}/${path}`;
+export const API_BASE_URL = 'http://localhost:8080';
+export const buildUrl = (path = '') => `${API_BASE_URL}/${path}`;

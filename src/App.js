@@ -15,12 +15,6 @@ import Education from './Components/Education'
 import KnowledgeCatalog from './Components/KnowledgeCatalog'
 import References from './Components/References'
 
-// const base_url = 'http://localhost:8080'
-
-// fetch(input: base_url+)
-
-// fetch(input:'http://localhost8080.....') .then().catch()
-// fetch(input:'/post.....') .then().catch()
 
 function App() {
   return (
