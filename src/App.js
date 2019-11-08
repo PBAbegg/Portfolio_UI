@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Nav } from 'reactstrap';
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,7 +9,8 @@ import {
 } from 'react-router-dom';
 
 import Home from './Components/Home'
-import Projects from './Components/Projects'
+import Projects from './Components/Projects/DisplayProject'
+////////////////////////////////////////////ProjectPage
 import Skills from './Components/Skills'
 import WorkExperience from './Components/WorkExperience'
 import Education from './Components/Education'
@@ -16,35 +18,21 @@ import KnowledgeCatalog from './Components/KnowledgeCatalog'
 import References from './Components/References'
 
 
+
 function App() {
   return (
     <Router>
     <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/projects">Projects</Link>
-        </li>
-        <li>
-          <Link to="/skills">Skills</Link>
-        </li>
-        <li>
-          <Link to="/work_experience">Work Experience</Link>
-        </li>
-        <li>
-          <Link to="/education">Education</Link>
-        </li>
-        <li>
-          <Link to="/knowledge_catalog">Knowledge Catalog</Link>
-        </li>
-        <li>
-          <Link to="/references">References</Link>
-        </li>
-      </ul>
-
-      <hr />
+          <Nav vertical>      
+            <Link to="/">Home</Link>
+            <Link to="/projects">Projects</Link>
+            <Link to="/skills">Skills</Link>
+            <Link to="/work_experience">Work Experience</Link>
+            <Link to="/education">Education</Link>
+            <Link to="/knowledge_catalog">Knowledge Catalog</Link>
+            <Link to="/references">References</Link>
+          </Nav>
+        <hr />
 
       <Switch>
         <Route exact path="/">
