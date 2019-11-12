@@ -1,9 +1,10 @@
 //to the project page
 
 import React, { Component, } from 'react';
+import PubSub from 'pubsub-js';
 import { buildUrl } from '../../url';
+import { PROJECT_CREATED_CHANNEL } from '.././Subscriptions';
 import ReactDOM from 'react-dom';
-
 
 
 export default class AddNewProject extends Component {
@@ -47,6 +48,8 @@ export default class AddNewProject extends Component {
       e.preventDefault();
       this.addProject.reset();
       console.log(`The values are ${this.state.project_name}, ${this.state.description}, and ${this.state.link}, ${this.state.screenshot}`)
+      
+      PubSub.publish(PROJECT_CREATED_CHANNEL, this.state);
 
       let post = { 
         method: 'POST',

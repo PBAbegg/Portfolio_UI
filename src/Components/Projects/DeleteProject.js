@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import PubSub from 'pubsub-js';
 import ReactDOM from 'react-dom';
 import { buildUrl } from '../../url';
 import Projects from './DisplayProject';
@@ -8,7 +9,13 @@ export default class DeleteProject extends Component{
 
 
 constructor(props) {
-    super(props);
+    super(props); 
+    }
+
+    render() {
+        return(
+            <button>Delete</button>
+        )
     }
         // componentDidMount() {
         //     fetch(buildUrl('projects')); {
