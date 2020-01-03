@@ -9,14 +9,25 @@ export default class DeleteProject extends Component{
 
 
 constructor(props) {
-    super(props); 
+    super(props);
+    this.id=props.id
+    this.getProjects=props.getProjects.bind(this)
+    }
+
+    deleteProject(e,id){
+        e.preventDefault()
+        console.log("id",buildUrl(`projects/${id}`))
+        fetch (buildUrl(`projects/${id}`),{method:'DELETE'})
+        .then(console.log("deleted"))
+        .then(this.getProjects())
     }
 
     render() {
         return(
-            <button>Delete</button>
+            <button onClick={(e)=>this.deleteProject(e,this.id)}>Delete</button>
         )
     }
+}
         // componentDidMount() {
         //     fetch(buildUrl('projects')); {
         //         method: 'DELETE'
@@ -30,13 +41,6 @@ constructor(props) {
         //         </div>
         //     )
         // }
-
-}
-
-
-
-
-
 
 
 

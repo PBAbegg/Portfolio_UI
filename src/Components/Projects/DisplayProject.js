@@ -16,17 +16,32 @@ export default class DisplayProject extends Component {
       };
       this.handleAddedProject = this.handleAddedProject.bind(this);
       PubSub.subscribe(PROJECT_CREATED_CHANNEL, this.handleAddedProject);
+
+      this.handleDeletedProject = this.handleDeletedProject.bind(this);
+      PubSub.subscribe(PROJECT_CREATED_CHANNEL, this.handleDeletedProject);
     }
 
     handleAddedProject(msg, project) {
       console.log(msg, project);
-      this.setState({projects: [...this.state.projects, project]})// add project to projects array then save to state
+      this.setState({projects: [...this.state.projects, project]})
+    }
+    handleDeletedProject(msg, project) {
+      console.log(msg, project);
+      this.setState({projects: [...this.state.projects, project]})
     }
 
-    componentDidMount() {
+    getProjects(){
+      console.log("getting the stuff")
       fetch (buildUrl('projects'))
         .then(response => response.json())
-        .then(data => this.setState({ projects: data }));
+        .then(data => this.setState({ projects: data }))
+    };
+
+    componentDidMount() {
+      this.getProjects()
+      // fetch (buildUrl('projects'))
+      //   .then(response => response.json())
+      //   .then(data => this.setState({ projects: data }));
     };
 
     render() {
@@ -39,7 +54,7 @@ export default class DisplayProject extends Component {
                       <li>{project.description}</li>
                       <li>{project.link}</li>
                       <li>{project.screen_shot}</li>
-                      <DeleteProject/>
+                      <DeleteProject id={project._id} getProjects={this.getProjects}/>
                   </ul>
               )           
             }
