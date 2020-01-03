@@ -20,7 +20,7 @@ export default class DisplayProject extends Component {
 
     handleAddedProject(msg, project) {
       console.log(msg, project);
-      this.setState({projects: this.state.projects})// add project to projectS array then save to state});
+      this.setState({projects: [...this.state.projects, project]})// add project to projects array then save to state
     }
 
     componentDidMount() {
