@@ -22,7 +22,7 @@ constructor(props) {
         .then(console.log("deleted"))
         .then(this.getProjects())
 
-        PubSub.publish(PROJECT_CREATED_CHANNEL, this.state);
+        //PubSub.publish(PROJECT_CREATED_CHANNEL, this.state);
     }
     
 

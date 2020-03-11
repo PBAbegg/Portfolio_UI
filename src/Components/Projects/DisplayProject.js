@@ -46,7 +46,7 @@ export default class DisplayProject extends Component {
     render() {
         return (
           <div>
-            <div> {
+            <div > {
               this.state.projects.map( project =>
                   <ul key={project.id}>
                       <li>{project.project_name}</li>
