@@ -25,7 +25,6 @@ constructor(props) {
         PubSub.subscribe(PROJECT_CREATED_CHANNEL, this.state);
     }
     
-
     render() {
         return(
             <button onClick={(e)=>this.deleteProject(e,this.id)}>Delete</button>
