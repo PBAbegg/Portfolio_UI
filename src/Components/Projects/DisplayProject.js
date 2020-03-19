@@ -23,7 +23,10 @@ export default class DisplayProject extends Component {
 
     handleAddedProject(msg, project) {
       console.log(msg, project);
-      this.setState({projects: [...this.state.projects, project]})
+      this.setState({projects: [...this.state.projects, project]},function(){
+        console.log(this.state)
+      })
+      //this.setState({projects: this.state.projects.push(project)})
     }
     // handleDeletedProject(msg, project) {
     //   console.log(msg, project);
@@ -48,7 +51,7 @@ export default class DisplayProject extends Component {
           <div>
             <div > {
               this.state.projects.map( project =>
-                  <ul key={project.id}>
+                  <ul key={`project_${project._id}`}>
                       <li>{project.project_name}</li>
                       <li>{project.description}</li>
                       <li>{project.link}</li>

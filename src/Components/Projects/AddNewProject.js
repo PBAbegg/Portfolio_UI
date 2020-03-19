@@ -15,7 +15,7 @@ export default class AddNewProject extends Component {
         this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeLink = this.onChangeLink.bind(this);
         this.onChangeScreenshot = this.onChangeScreenshot.bind(this);
-        this.onClick = this.onClick.bind(this);
+        this.onClick = this.onClick.bind(this); 
   
         this.state = {
           //unique id
@@ -49,9 +49,10 @@ export default class AddNewProject extends Component {
     onClick(e) {
       e.preventDefault();
       this.addProject.reset();
-      console.log(`The values are ${this.state.project_name}, ${this.state.description}, and ${this.state.link}, ${this.state.screenshot}`)
+      console.log(`The values are ${this.state.project_name}, ${this.state.description}, 
+      and ${this.state.link}, ${this.state.screenshot}`)
       
-      PubSub.publish(PROJECT_CREATED_CHANNEL, this.state);
+      
 
       let post = { 
         method: 'POST',
@@ -71,9 +72,12 @@ export default class AddNewProject extends Component {
         .then(function(response) {
           if(response.ok) {
             console.log('Submission was recorded');
-            return;
+            return response.json();
           }
-          throw new Error('Request failed.');
+          throw new Error('Submission failed.');
+        })
+        .then(function(data){console.log(data)
+        PubSub.publish(PROJECT_CREATED_CHANNEL, data);
         })
         .catch(function(error) {
           console.log(error);
